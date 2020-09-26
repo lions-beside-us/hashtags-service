@@ -29,7 +29,8 @@ for ( let i = 1; i <= numberOfSongs; i++) {
     song_id: i,
     hashtags: generateArrayOfHashTags()
   }
-  hashtagDb.saveHashtag(tempHashtag);
-  console.log(`hashtag '${tempHashtag.hashtags}' added`)
+  hashtagDb.saveHashtag(tempHashtag)
+  .then(hashtags => console.log(`hashtag '${hashtags.hashtags}' added`))
+  .catch(error => console.error(error.message));
 }
 

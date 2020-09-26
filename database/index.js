@@ -36,9 +36,11 @@ let saveHashtag = (hashtag) => {
     hashtags:  hashtag.hashtags
   });
 
-  newHashtag.save((err, newHashtag) => {
-    if (err) return console.error('save error: ', err);
-  });
+  // newHashtag.save((err, newHashtag) => {
+  //   if (err) return console.error('save error: ', err);
+  // });
+
+  return newHashtag.save(newHashtag);
 }
 
 module.exports.saveHashtag = saveHashtag;
