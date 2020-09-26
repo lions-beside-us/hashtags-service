@@ -4,4 +4,7 @@ const masterHashTags3 = ["albumoftheday", "ampeg", "artist", "band", "bandmember
 
 let masterHashTags = masterHashTags1.concat(masterHashTags2.concat(masterHashTags3));
 
+let dedupe = (arr) => arr.filter((v,i) => arr.indexOf(v) === i);
+masterHashTags = dedupe(masterHashTags);
+
 module.exports.masterHashTags = masterHashTags;

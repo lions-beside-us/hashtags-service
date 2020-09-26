@@ -13,8 +13,12 @@ const randoNumOfHashtags = () => {
 
 const generateArrayOfHashTags = () => {
   let hashtagsArr = [];
-  while ( hashtagsArr.length < randoNumOfHashtags() ) {
-    hashtagsArr.push(hashTags.masterHashTags[randoHashTag()]);
+  let  numOfHashTags= randoNumOfHashtags();
+  while ( hashtagsArr.length < numOfHashTags ) {
+    let hashTag = randoHashTag();
+    if ( !hashtagsArr.includes(hashTag) ) {
+      hashtagsArr.push(hashTags.masterHashTags[hashTag]);
+    }
   }
   return hashtagsArr;
 }
