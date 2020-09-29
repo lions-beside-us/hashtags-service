@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/fec-soundcloud-hastags', {
+mongoose.connect('mongodb://localhost/fec-soundcloud-hashtags', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
@@ -24,12 +24,12 @@ const hashtagSchema = new mongoose.Schema({
     required: true
   },
   song_id: Number,
-  hashtags: Array
+  hashtags: [String]
 });
 
-let Hashtag = mongoose.model('Hashtag', hashtagSchema);
+const Hashtag = mongoose.model('Hashtag', hashtagSchema);
 
-let saveHashtag = (hashtag) => {
+const saveHashtag = (hashtag) => {
   let newHashtag = new Hashtag({
     hashtag_id: hashtag.hashtag_id,
     song_id:   hashtag.song_id,
@@ -43,4 +43,9 @@ let saveHashtag = (hashtag) => {
   return newHashtag.save(newHashtag);
 }
 
+const getHashtags = () => {
+  return Hashtag.find();
+}
+
+module.exports.getHashtags = getHashtags;
 module.exports.saveHashtag = saveHashtag;
