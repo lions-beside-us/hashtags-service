@@ -13,9 +13,9 @@ db.once('open', function() {
   console.log('mongodb connected!')
 });
 
-db.dropCollection("hashtags", (err, result) =>  {
-  console.log("Collection dropped");
-});
+// db.dropCollection("hashtags", () =>  {
+//   console.log("Collection dropped");
+// });
 
 const hashtagSchema = new mongoose.Schema({
   hashtag_id: {
@@ -47,5 +47,10 @@ const getHashtags = () => {
   return Hashtag.find();
 }
 
+const getHashTag = (id) => {
+  return Hashtag.find({ song_id: id });
+}
+
 module.exports.getHashtags = getHashtags;
+module.exports.getHashTag = getHashTag;
 module.exports.saveHashtag = saveHashtag;

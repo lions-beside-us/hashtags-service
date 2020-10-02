@@ -10,6 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// get all hashtags
 app.get('/hashtags', async(req, res) => {
   try {
     const hashtags = await db.getHashtags();
@@ -25,7 +26,26 @@ app.get('/hashtags', async(req, res) => {
       msg: error
     });
   }
-})
+});
+
+app.get('/hashtags/:id', async(req, res) => {
+  try {
+    const { id } = req.params;
+
+    const hashtag = await db.getHashTag(id);
+
+    res.status(200).send({
+      success: true,
+      data: hashtag[0].hashtags
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({
+      success: false,
+      msg: error
+    });
+  }
+});
 
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
