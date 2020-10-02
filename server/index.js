@@ -41,7 +41,7 @@ app.get('/hashtags/:id', async(req, res) => {
   } catch (error) {
     console.error(error);
     res.status(400).json({
-      succes: false,
+      success: false,
       msg: error
     });
   }

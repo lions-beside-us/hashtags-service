@@ -13,7 +13,7 @@ db.once('open', function() {
   console.log('mongodb connected!')
 });
 
-// db.dropCollection("hashtags", (err, result) =>  {
+// db.dropCollection("hashtags", () =>  {
 //   console.log("Collection dropped");
 // });
 
