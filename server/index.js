@@ -39,10 +39,11 @@ app.get('/hashtags/:id', async(req, res) => {
       data: hashtag[0].hashtags
     });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(400).json({
       success: false,
-      msg: error
+      msg: `no song with id ${req.params.id}`,
+      error: error
     });
   }
 });
