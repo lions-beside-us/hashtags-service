@@ -34,6 +34,14 @@ app.get('/hashtags/:id', async(req, res) => {
 
     const hashtag = await db.getHashTag(id);
 
+    if ( !hashtag ) {
+      res.status(400).json({
+        success: false,
+        msg: `no song with id ${req.params.id}`,
+        error: error
+      });
+    }
+
     res.status(200).send({
       success: true,
       data: hashtag[0].hashtags
