@@ -12,9 +12,9 @@ class App extends React.Component {
     this.getHashtags = this.getHashtags.bind(this);
   }
 
-  getHashtags() {
+  getHashtags(id) {
     // console.log('hi');
-    axios.get('http://localhost:4001/hashtags/13')
+    axios.get(`http://localhost:4001/hashtags/${id}`)
       .then(response => {
         const hashtags = response.data.data;
         this.setState({
@@ -24,7 +24,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getHashtags();
+    this.getHashtags(1);
   }
 
   render() {
