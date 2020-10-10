@@ -6,7 +6,6 @@ const db = require('../database/index');
 const port = 4001;
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
