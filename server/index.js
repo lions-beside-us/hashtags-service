@@ -3,10 +3,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const db = require('../database/index');
 
-const port = 4000;
+const port = 4001;
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
@@ -34,15 +33,24 @@ app.get('/hashtags/:id', async(req, res) => {
 
     const hashtag = await db.getHashTag(id);
 
+    if ( !hashtag ) {
+      res.status(400).json({
+        success: false,
+        msg: `no song with id ${req.params.id}`,
+        error: error
+      });
+    }
+
     res.status(200).send({
       success: true,
       data: hashtag[0].hashtags
     });
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     res.status(400).json({
       success: false,
-      msg: error
+      msg: `no song with id ${req.params.id}`,
+      error: error
     });
   }
 });
@@ -50,3 +58,5 @@ app.get('/hashtags/:id', async(req, res) => {
 app.listen(port, () => {
   console.log(`server running on port ${port}`);
 });
+
+module.exports = app;

@@ -44,7 +44,7 @@ const saveHashtag = (hashtag) => {
 }
 
 const getHashtags = () => {
-  return Hashtag.find();
+  return Hashtag.find().limit(1000);
 }
 
 const getHashTag = (id) => {
