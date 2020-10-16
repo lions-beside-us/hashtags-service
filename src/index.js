@@ -37,7 +37,8 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getHashtags(1);
+    let hashtagsId = window.location.pathname.substring(1);
+    this.getHashtags(hashtagsId);
   }
 
   render() {
