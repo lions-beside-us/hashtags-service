@@ -2,10 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const db = require('../database/index');
+const path = require('path');
 
 const port = 4001;
 
 const app = express();
+app.use(express.static('./dist'));
 app.use(express.json());
 app.use(cors());
 
@@ -53,6 +55,11 @@ app.get('/hashtags/:id', async(req, res) => {
       error: error
     });
   }
+});
+
+app.get('/:current', (req, res) => {
+  console.log('hit');
+  res.sendFile(path.join(__dirname,'../dist/index.html'));
 });
 
 app.listen(port, () => {
