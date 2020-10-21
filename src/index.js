@@ -4,16 +4,22 @@ import axios from 'axios';
 import styled from 'styled-components'
 
 const TolyTag = styled.span`
-  background-color: rgb(169,169,169);
+  background-color: #999;
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 5px 8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    background-color: #333;
+  }
 `;
 
 class App extends React.Component {
