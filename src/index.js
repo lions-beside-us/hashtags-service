@@ -3,27 +3,7 @@ import ReactDOM, { render } from "react-dom";
 import axios from 'axios';
 // import styled from 'styled-components'
 
-// const DavidTag = styled.span`
-//   background-color: #999;
-//   border: none;
-//   color: white;
-//   padding: 5px 8px;
-//   text-align: center;
-//   text-decoration: none;
-//   display: inline-block;
-//   margin: 4px 2px;
-//   cursor: pointer;
-//   border-radius: 16px;
-//   font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-//   font-size: 14px;
-//   cursor: pointer;
-//   &:hover {
-//     background-color: #333;
-//   }
-// `;
-
 const tolysHashtags = {
-  // color: 'blue',
   backgroundColor: '#999',
   border: 'none',
   color: 'white',
@@ -36,10 +16,7 @@ const tolysHashtags = {
   borderRadius: '16px',
   fontFamily: 'Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif',
   fontSize: '14px',
-  cursor: 'pointer',
-  "&:hover": {
-    background: '#333'
-  }
+  cursor: 'pointer'
 };
 
 class App extends React.Component {
@@ -62,6 +39,18 @@ class App extends React.Component {
       });
   }
 
+  onMouseOver(event) {
+    const el = event.target;
+    el.style.backgroundColor = '#333';
+    el.style.pointer = 'cursor';
+  };
+
+  onMouseOut(event) {
+    const el = event.target;
+    el.style.backgroundColor = '#999';
+    el.style.pointer = 'cursor'
+  };
+
   componentDidMount() {
     let hashtagsId = window.location.pathname.substring(1);
     this.getHashtags(hashtagsId);
@@ -72,7 +61,13 @@ class App extends React.Component {
       <div>
           {
             this.state.hashtags.map(hashtag =>
-                <span style={tolysHashtags}>#{hashtag}</span>
+                <span
+                  style={tolysHashtags}
+                  onMouseEnter={event => this.onMouseOver(event)}
+                  onMouseOut={event => this.onMouseOut(event)}
+                >
+                  #{hashtag}
+                </span>
             )
           }
       </div>
