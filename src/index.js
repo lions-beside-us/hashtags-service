@@ -22,7 +22,7 @@ import axios from 'axios';
 //   }
 // `;
 
-const divStyle = {
+const tolysHashtags = {
   // color: 'blue',
   backgroundColor: '#999',
   border: 'none',
@@ -72,7 +72,7 @@ class App extends React.Component {
       <div>
           {
             this.state.hashtags.map(hashtag =>
-                <span style={divStyle}>#{hashtag}</span>
+                <span style={tolysHashtags}>#{hashtag}</span>
             )
           }
       </div>
