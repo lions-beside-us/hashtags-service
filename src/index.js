@@ -30,7 +30,7 @@ class App extends React.Component {
 
   getHashtags(id) {
     // console.log('hi');
-    axios.get(`http://localhost:4001/hashtags/${id}`)
+    axios.get(`/hashtags/${id}`)
       .then(response => {
         const hashtags = response.data.data;
         this.setState({
