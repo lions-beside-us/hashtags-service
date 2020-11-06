@@ -3,11 +3,19 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const db = require('../database/index');
 const path = require('path');
+const expressStaticGzip = require('express-static-gzip');
 
 const port = 4001;
 
 const app = express();
-app.use(express.static('./dist'));
+// app.use(express.static('./dist'));
+app.use('/', expressStaticGzip(('./dist'), {
+  enableBrotli: true,
+   orderPreference: ['br', 'gz'],
+   setHeaders: function (res, path) {
+      res.setHeader("Cache-Control", "dist, max-age=31536000");
+   }
+}))
 app.use(express.json());
 app.use(cors());
 
